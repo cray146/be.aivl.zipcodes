@@ -1,3 +1,7 @@
+{*
+ * File for the address block on the contact edit page
+ *}
+
 {literal}
 <script type="text/javascript">
 

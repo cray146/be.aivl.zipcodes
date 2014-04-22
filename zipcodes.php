@@ -109,22 +109,25 @@ function zipcodes_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
 
 function zipcodes_civicrm_buildForm($formName, &$form) {
   if ($formName == 'CRM_Contact_Form_Contact') {
-    /*$i = 1; //blocks
-    $form_html = '<h1>HOI</h1>';
-    $form->addElement('static', 'address[' . $i . '][widget]', $form_html);*/
     CRM_Core_Resources::singleton()->addScriptFile('be.aivl.zipcodes', 'postcodes.js');
   }
 }
 
 function zipcodes_civicrm_alterContent(  &$content, $context, $tplName, &$object ) {
-  /*if ($object instanceof CRM_Contact_Form_Inline_Address) {
+  if ($object instanceof CRM_Contact_Form_Inline_Address) {
     $locBlockNo = CRM_Utils_Request::retrieve('locno', 'Positive', CRM_Core_DAO::$_nullObject, TRUE, NULL, $_REQUEST);
     $template = CRM_Core_Smarty::singleton();
     $template->assign('blockId', $locBlockNo);
-    $content .= $template->fetch('CRM/Contact/Form/Edit/Address/postcodenl_js.tpl');
-  }*/
+    $content .= $template->fetch('CRM/Contact/Form/Edit/Address/postcode_js.tpl');
+  }
   if ($object instanceof CRM_Contact_Form_Contact) {
     $template = CRM_Core_Smarty::singleton();
     $content .= $template->fetch('CRM/Contact/Form/Edit/postcode_contact_js.tpl');
+  }
+}
+
+function zipcodes_civicrm_pageRun( &$page ) {
+  if ($page instanceof CRM_Contact_Page_View_Summary) {
+    CRM_Core_Resources::singleton()->addScriptFile('be.aivl.zipcodes', 'postcodes.js');
   }
 }

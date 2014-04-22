@@ -46,7 +46,10 @@ function zipcodes_reset() {
     cj('.zipcodes_input_row').remove();
 }
 
-
+/*
+ * The code sniplet below makes sure that whenever a new address block is added
+ * the reset functions are run
+ */
 cj(function() {
     cj.each(['show', 'hide'], function (i, ev) {
         var el = cj.fn[ev];
