@@ -1,5 +1,9 @@
 function init_postcodeBlock(blockId, address_table_id) {
-    var first_row = cj(address_table_id + ' tbody tr:first');
+    var city_field_td = cj(address_table_id + ' #address_'+blockId+'_city').parent();
+    var postalcode_field_td = cj(address_table_id + ' #address_'+blockId+'_postal_code').parent();
+    //postalcode_field_td.detach();
+    city_field_td.parent().prepend(postalcode_field_td);
+    var first_row = city_field_td.parent().parent().parent().parent().parent();
     first_row.before(zipcodes_getRowHtml(blockId)); 
     zipcodes_addOnChange(blockId);
     zipcodes_addAutocomplete(blockId);
