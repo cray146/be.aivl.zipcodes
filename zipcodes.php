@@ -107,17 +107,12 @@ function zipcodes_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
   _zipcodes_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
-function zipcodes_civicrm_buildForm($formName, &$form) {
-  if ($formName == 'CRM_Contact_Form_Contact') {
-    CRM_Core_Resources::singleton()->addScriptFile('be.aivl.zipcodes', 'postcodes.js');
-  }
-}
-
 function zipcodes_civicrm_alterContent(  &$content, $context, $tplName, &$object ) {
   if ($object instanceof CRM_Contact_Form_Inline_Address) {
     $locBlockNo = CRM_Utils_Request::retrieve('locno', 'Positive', CRM_Core_DAO::$_nullObject, TRUE, NULL, $_REQUEST);
     $template = CRM_Core_Smarty::singleton();
     $template->assign('blockId', $locBlockNo);
+    //CRM_Core_Error::debug_log_message("Fetch postcode_js.tpl");
     $content .= $template->fetch('CRM/Contact/Form/Edit/Address/postcode_js.tpl');
   }
   if ($object instanceof CRM_Contact_Form_Contact) {
@@ -126,8 +121,3 @@ function zipcodes_civicrm_alterContent(  &$content, $context, $tplName, &$object
   }
 }
 
-function zipcodes_civicrm_pageRun( &$page ) {
-  if ($page instanceof CRM_Contact_Page_View_Summary) {
-    CRM_Core_Resources::singleton()->addScriptFile('be.aivl.zipcodes', 'postcodes.js');
-  }
-}

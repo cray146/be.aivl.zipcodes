@@ -9,12 +9,12 @@
     <email>helpdesk@civicoop.org</email>
   </maintainer>
   <releaseDate>2014-04-22</releaseDate>
-  <version>1.0</version>
+  <version>2.0</version>
   <develStage>alpha</develStage>
   <compatibility>
-    <ver>4.4</ver>
+    <ver>4.5</ver>
   </compatibility>
-  <comments>This is a new, undeveloped module</comments>
+  <comments>Version 2.0 is upgraded for CiviCRM 4.5. It has also extended functionality: not only postal code and city fields but also country and state_province are set based on the selection in the lookup field.</comments>
   <civix>
     <namespace>CRM/Zipcodes</namespace>
   </civix>
